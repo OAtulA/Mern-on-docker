@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
     res.send("Hello Basic server running");
 });
 app.get("/api/users", (req, res) => {
-    res.send("Hello Users");
+    res.send("Hello Users maje lo");
 });
 
 async function connectToMongo() {
