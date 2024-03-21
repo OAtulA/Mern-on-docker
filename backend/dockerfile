@@ -1,0 +1,11 @@
+FROM Node:20
+
+WORKDIR /app
+
+COPY package.json .
+COPY pnpm*.yaml .
+
+RUN npm i pnpm -g && pnpm i
+
+COPY . .
+
