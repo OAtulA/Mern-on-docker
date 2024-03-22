@@ -1,5 +1,11 @@
 # React + Vite
 
+# Current stable is 
+
+multi_dock_client                 0.014 
+
+with CMD CMD [ "npm", "run", "dev" ]
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

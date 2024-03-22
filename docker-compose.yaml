@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:7
+  api:
+    build:
+      dockerfile: dockerfile
+      context: "./backend"
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+  nginx:
+    depends_on:
+      - api
+      - chat
+    restart: always
+    build:
+      dockerfile: dockerfile
+      context: "./nginx"
+    ports:
+      - 3050:80
+  chat:
+    build:
+      dockerfile: dockerfile
+      context: "./chat_feature"
+    volumes:
+      - /chat/node_modules
+      - ./chat_feature:/chat

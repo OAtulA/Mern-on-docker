@@ -1,4 +1,6 @@
-FROM node:18-alpine
+# version: 0.013
+
+FROM node:20
 
 WORKDIR /app
 
@@ -12,4 +14,4 @@ RUN npm run build
 
 EXPOSE 5000
 
-CMD [ "npm", "run", "preview" ]
+CMD [ "npm", "run", "dev" ]
