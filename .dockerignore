@@ -1,3 +1,5 @@
 node_modules/
 
+.env
+# Output dir of the code
 dist/
