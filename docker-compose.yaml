@@ -9,6 +9,16 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
+  nginx:
+    depends_on:
+      - api
+      - chat
+    restart: always
+    build:
+      dockerfile: dockerfile
+      context: "./nginx"
+    ports:
+      - 3050:80
   chat:
     build:
       dockerfile: dockerfile
@@ -16,4 +26,3 @@ services:
     volumes:
       - /chat/node_modules
       - ./chat_feature:/chat
-  

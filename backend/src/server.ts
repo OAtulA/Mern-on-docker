@@ -23,6 +23,7 @@ async function connectToMongo() {
 
 connectToMongo();
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+let PORT = process.env.PORT ||3001;
+app.listen(3001, () => {
+    console.log("Server is running on", `http://localhost:${PORT}`);
 });
