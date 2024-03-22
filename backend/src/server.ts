@@ -14,7 +14,7 @@ app.get("/api/users", (req, res) => {
 
 async function connectToMongo() {
   try {
-    await mongoose.connect("mongodb://localhost:27017/test");
+    await mongoose.connect("mongodb://localhost:27017/");
     console.log("Connected to MongoDB");
   } catch (error) {
     console.log("Error connecting to MongoDB");
