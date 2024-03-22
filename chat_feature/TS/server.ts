@@ -3,6 +3,7 @@ import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import User from "./models/user";
+import Chat from "./models/chat";
 
 let app = express();
 let server = createServer(app);
@@ -94,6 +95,14 @@ io.on("connection", (socket) => {
     } else {
       let to_user = await map_socket_user.get(to);
       io.to(to_user as string).emit("chat", { from, message });
+      // try to save the message to the database
+      try {
+        let chat = new Chat(from, to, message);
+        await chat.save();
+      } catch (err: any) {
+        console.log(err.message);
+        // socket.emit("error", err.message);
+      }
     }
   });
 
