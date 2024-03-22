@@ -24,9 +24,13 @@ interface IUser {
 let MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/";
 
 let mongooseConnect = async () => {
-  await mongoose.connect(MONGO_URI);
+  try {
+    await mongoose.connect(MONGO_URI);
 
-  console.log("connected to mongodb");
+    console.log("connected to mongodb");
+  } catch (error) {
+    console.log("not connected to mongodb");
+  }
 };
 mongooseConnect();
 
