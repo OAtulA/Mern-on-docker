@@ -54,8 +54,6 @@ export default Chatpage
 
 // ChatPage.jsx
 
-import { ContactsList, Messages } from './components';
-
 function ChatPage() {
   const [contacts] = useState(getContacts()); 
   const [messages] = useState(getMessages());
