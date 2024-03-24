@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-function ChatHeader({currentContact}) {
+function randomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+function ChatHeader({ currentContact }) {
   return (
     <div className="flex items-center justify-between px-4 py-2 border-b">
       <h3 className="text-lg font-medium">{currentContact}</h3>
@@ -156,8 +159,9 @@ function Chatpage() {
 
   return (
     <div className="flex h-screen">
+      {/* contacts list */}
       <ContactsList contacts={contacts} />
-
+      {/* messages list */}
       <Messages messages={messages} currentContact="Alice" />
     </div>
   );
@@ -199,15 +203,35 @@ function ContactItem({ name, avatar, message }) {
 
 // Messages.jsx
 
-function Message({ isMe, text }) {
-  let isMeChat = isMe? "text-right" : "";
-  let isMebg = isMe? "bg-blue-100" : "bg-gray-100";
+function Message({ key_var, isMe, text }) {
+  let isMeChat = isMe ? "text-right" : "";
+  let isMebg = isMe ? "bg-blue-100" : "bg-gray-100";
+  let crypted_key = randomInt(key_var);
   return (
     <div
+      key={crypted_key}
       className={`flex items-center justify-between mb-4 p-2 rounded-lg ${isMeChat} ${isMebg}`}
     >
       <p className="text-sm">{text}</p>
     </div>
+  );
+}
+
+function ComposeForm({ text, onChange, onSubmit }) {
+  return (
+    <form className="flex" onSubmit={onSubmit}>
+      <input
+        className="flex-1 px-4 py-2 bg-gray-100 rounded-lg"
+        type="text"
+        value={text}
+        onChange={onChange}
+      />
+      <button type="submit" className="px-4 py-2 bg-blue-500 rounded-lg">
+        Send
+      </button>
+      <button className="px-4 py-2 bg-red-500 rounded-lg">Cancel</button>
+      <button className="px-4 py-2 bg-green-500 rounded-lg">Save</button>
+    </form>
   );
 }
 
@@ -218,21 +242,24 @@ function Messages({ messages, currentContact }) {
     e.preventDefault();
     // send text message
   }
+  console.log(messages);
 
   return (
     <div className="flex-1">
+      {/* Chat header */}
       <ChatHeader name={currentContact} />
+      {/* Message */}
 
       <div className="h-full overflow-y-auto p-4">
         {messages.map((message, i) => (
           <Message
-            key={message.id || i}
+            key_var={message.id || i}
             isMe={message.sender === "Me"}
             text={message.text}
           />
         ))}
       </div>
-
+      {/* Compose form */}
       <ComposeForm text={text} onChange={setText} onSubmit={handleSubmit} />
     </div>
   );
