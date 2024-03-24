@@ -9,10 +9,18 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
+  client:
+    build:
+      dockerfile: dockerfile
+      context: "./client"
+    volumes:
+      - /app/node_modules
+      - ./client:/app
   nginx:
     depends_on:
       - api
       - chat
+      - client
     restart: always
     build:
       dockerfile: dockerfile
