@@ -14,7 +14,8 @@ export default defineConfig({
     origin: "http://localhost:5000",
   },
   preview: {
-    host: "localhost",
+    host: true,
+    origin: "http://localhost:5000",
     port: 5000,
     strictPort: true,
   },
