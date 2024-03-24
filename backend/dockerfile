@@ -8,5 +8,6 @@ COPY pnpm*.yaml ./
 RUN npm i pnpm -g && pnpm i
 
 COPY . .
+EXPOSE 3001
 
 CMD [ "pnpm", "run", "start" ]
