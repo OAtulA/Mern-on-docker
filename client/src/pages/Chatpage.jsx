@@ -159,6 +159,7 @@ function Chatpage() {
 
   return (
     <div className="flex h-screen">
+      <p className="hidden"> This is contacts section</p>
       {/* contacts list */}
       <ContactsList contacts={contacts} />
       {/* messages list */}
