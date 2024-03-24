@@ -224,9 +224,9 @@ function Messages({ messages, currentContact }) {
       <ChatHeader name={currentContact} />
 
       <div className="h-full overflow-y-auto p-4">
-        {messages.map((message) => (
+        {messages.map((message, i) => (
           <Message
-            key={message.id}
+            key={message.id || i}
             isMe={message.sender === "Me"}
             text={message.text}
           />
