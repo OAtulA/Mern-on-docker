@@ -14,9 +14,9 @@ function ChatHeader({ currentContact }) {
 function ContactsList({ contacts }) {
   return (
     <div className="w-1/4">
-      {contacts.map((contact) => (
+      {contacts.map((contact, id) => (
         <ContactItem
-          key={contact.name}
+          key={id}
           name={contact.name}
           avatar={contact.avatar}
           message={contact.message}
