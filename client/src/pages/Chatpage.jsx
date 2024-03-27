@@ -205,15 +205,16 @@ function ContactItem({ name, avatar, message }) {
 // Messages.jsx
 
 function Message({ key_var, isMe, text }) {
-  let isMeChat = isMe ? "text-right" : "";
   let isMebg = isMe ? "bg-blue-100" : "bg-gray-100";
   let crypted_key = randomInt(key_var);
+
   return (
     <div
       key={crypted_key}
-      className={`flex items-center justify-between mb-4 p-2 rounded-lg ${isMeChat} ${isMebg}`}
+      className={`items-center w-[40%] justify-between mb-4 p-2 rounded-lg  ${isMebg}`}
+      style={isMe? { marginLeft: "auto" } : { marginRight: "auto" }}
     >
-      <p className="text-sm">{text}</p>
+      <p className="text-sm text-right">{text}</p>
     </div>
   );
 }
@@ -250,13 +251,13 @@ function Messages({ messages, currentContact }) {
       {/* Chat header */}
       <ChatHeader name={currentContact} />
       {/* Message */}
+      <div className="h-full overflow-y-auto w-auto p-4">
 
-      <div className="h-full overflow-y-auto p-4">
         {messages.map((message, i) => (
           <Message
             key_var={message.id || i}
-            isMe={message.sender === "Me"}
-            text={message.text}
+            isMe={message.from === "Me"}
+            text={message.message}
           />
         ))}
       </div>
