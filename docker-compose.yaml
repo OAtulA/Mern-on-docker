@@ -19,7 +19,7 @@ services:
   nginx:
     depends_on:
       - api
-      - chat
+      - chatf
       - client
     restart: always
     build:
@@ -27,7 +27,7 @@ services:
       context: "./nginx"
     ports:
       - 3050:80
-  chat:
+  chatf:
     build:
       dockerfile: dockerfile
       context: "./chat_feature"

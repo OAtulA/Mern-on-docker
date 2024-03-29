@@ -120,7 +120,7 @@ io.on("connection", (socket) => {
 
 let PORT = process.env.PORT || 3005;
 
-app.get("/chat", (req, res) => {
+app.get("/chatf", (req, res) => {
   res.send("Chat route hit");
 });
 app.listen(PORT, () => {
