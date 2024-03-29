@@ -2,24 +2,34 @@ version: "3"
 services:
   mongodb:
     image: mongo:7
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+     - dock_mern
   api:
     build:
       dockerfile: dockerfile
       context: "./backend"
     volumes:
-      - /app/node_modules
       - ./backend:/app
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/
+    networks:
+      - dock_mern
   client:
     build:
       dockerfile: dockerfile
       context: "./client"
     volumes:
-      - /app/node_modules
       - ./client:/app
+    networks:
+      - dock_mern
   nginx:
     depends_on:
       - api
-      - chat
+      - chatf
       - client
     restart: always
     build:
@@ -27,10 +37,21 @@ services:
       context: "./nginx"
     ports:
       - 3050:80
-  chat:
+    networks:
+      - dock_mern
+  chatf:
     build:
       dockerfile: dockerfile
       context: "./chat_feature"
     volumes:
-      - /chat/node_modules
       - ./chat_feature:/chat
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/
+    networks:
+      - dock_mern
+volumes:
+  mongodb_data:
+networks:
+  dock_mern:

@@ -1,6 +1,6 @@
 # Vite
 
-This is super cool awesome tool to setup the project.  
+This is super cool awesome tool to setup the project.
 
 However with the default file it generates is not capable of being used with the docker.  
 So I had to some adjustments and it started working.
@@ -57,7 +57,7 @@ This gives a production-like preview of the app for testing builds.
 The key options like port, host, origin mirror those in server  
 but apply to the preview server instead.
 
-All these are required to make it work with docker.   
+All these are required to make it work with docker.  
 Especially the origin and strictPort thing  
 else despite exposing the port it does not work.
 
