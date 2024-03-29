@@ -11,11 +11,11 @@ export default defineConfig({
     port: 5000,
     strictPort: true,
     host: true,
-    origin: "http://localhost:5000",
+    origin: "http://0.0.0.0:5000",
   },
   preview: {
     host: true,
-    origin: "http://localhost:5000",
+    origin: "http://0.0.0.0:5000",
     port: 5000,
     strictPort: true,
   },
