@@ -8,6 +8,9 @@ app.use(cors());
 app.get("/", (req, res) => {
     res.send("Hello Basic server running");
 });
+app.get("/api", (req, res) => {
+    res.send("Hello API maje lo");
+});
 app.get("/api/users", (req, res) => {
     res.send("Hello Users maje lo");
 });
