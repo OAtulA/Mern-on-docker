@@ -4,7 +4,6 @@ services:
     image: mongo:7
     volumes:
       - mongodb_data:/data/db
-
   api:
     build:
       dockerfile: dockerfile
