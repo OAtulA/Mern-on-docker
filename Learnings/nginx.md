@@ -71,7 +71,7 @@ So as you can see the upstream is same but the changes are in the routing.
 
 Also I made a small change in my chat server.
 
-```
+```JS
 app.get("/chatf", (req, res) => {
   res.send("Chat route hit");
 });
