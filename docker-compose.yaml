@@ -11,6 +11,10 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/
   client:
     build:
       dockerfile: dockerfile
@@ -36,5 +40,9 @@ services:
     volumes:
       - /chat/node_modules
       - ./chat_feature:/chat
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/
 volumes:
   mongodb_data:
