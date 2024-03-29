@@ -3,6 +3,7 @@ FROM node:20
 WORKDIR /chat 
 
 COPY package.json ./
+RUN npm i -g typescript
 RUN npm i 
 COPY . .
 EXPOSE 3005

@@ -4,8 +4,13 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import User from "./models/user";
 import Chat from "./models/chat";
+import cors from "cors";
 
-let app = express();
+let app = express(); 
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+ 
 let server = createServer(app);
 
 const io = new Server(server);
