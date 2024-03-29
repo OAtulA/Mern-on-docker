@@ -119,6 +119,10 @@ io.on("connection", (socket) => {
 });
 
 let PORT = process.env.PORT || 3005;
+
+app.get("/chat", (req, res) => {
+  res.send("Chat route hit");
+});
 app.listen(PORT, () => {
   console.log("listening on ", `http://localhost:${PORT}`);
 });
