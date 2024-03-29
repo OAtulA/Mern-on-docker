@@ -123,6 +123,10 @@ let PORT = process.env.PORT || 3005;
 app.get("/chatf", (req, res) => {
   res.send("Chat route hit");
 });
+app.get("/chatg", (req, res)=>{
+  res.send("Chat route hit");
+});
+
 app.listen(PORT, () => {
   console.log("listening on ", `http://localhost:${PORT}`);
 });

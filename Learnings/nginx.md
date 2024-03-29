@@ -47,3 +47,41 @@ server{
 }
 
 ```
+
+## having route names other than the container name
+
+So just a small change in the conf file
+
+have the same name of upstream as the contaniner
+
+```conf
+upstream chatf{
+    server chatf:3005;
+}
+server{
+    listen 80;
+
+        location /chatg {
+        proxy_pass http://chatf;
+    }
+}
+```
+
+So as you can see the upstream is same but the changes are in the routing.
+
+Also I made a small change in my chat server.
+
+```
+app.get("/chatf", (req, res) => {
+  res.send("Chat route hit");
+});
+app.get("/chatg", (req, res)=>{
+  res.send("Chat route hit");
+});
+```
+
+### Edgecase
+
+Since the `/chatg` was now `proxy_pass` to the chat app.  
+So I needed to add the `chatg` route to the chat app.  
+So that it can recieve the requests.

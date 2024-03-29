@@ -2,6 +2,9 @@ version: "3"
 services:
   mongodb:
     image: mongo:7
+    volumes:
+      - mongodb_data:/data/db
+
   api:
     build:
       dockerfile: dockerfile
@@ -34,3 +37,5 @@ services:
     volumes:
       - /chat/node_modules
       - ./chat_feature:/chat
+volumes:
+  mongodb_data:
