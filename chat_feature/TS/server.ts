@@ -94,7 +94,7 @@ io.on("connection", (socket) => {
   //   chat fucntion from, message, to
   socket.on("chat", async ({ from, message, to }) => {
     // check if to is connected and added to the map_socket_user?
-    if (map_socket_user.has(to)) {
+    if ( !map_socket_user.has(to)) {
       socket.emit("error", "user is not connected");
       return;
     } else {
