@@ -132,6 +132,7 @@ app.get("/chatg", (req, res)=>{
   res.send("Chat route hit");
 });
 
-app.listen(PORT, () => {
+// Here we listen on server because we are using socket.io
+server.listen(PORT, () => {
   console.log("listening on ", `http://localhost:${PORT}`);
 });
